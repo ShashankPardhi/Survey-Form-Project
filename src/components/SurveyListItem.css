@@ -1,0 +1,39 @@
+.survey-list-item {
+  padding: 10px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.survey-list-item > * {
+  width: 15vw;
+}
+
+.survey-list-item:hover {
+  border: 1px solid blue;
+  background-color: rgb(189, 246, 249);
+  padding: 10px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.icon img {
+  width: 20px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.actions {
+  display: flex;
+  justify-content: center;
+}
