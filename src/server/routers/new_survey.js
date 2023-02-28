@@ -7,3 +7,7 @@ surveyRouter.use(express.json())
 surveyRouter.post('/newSurvey', (req, res) => {
     console.log(req.body)
 })
+
+surveyRouter.post('/submitSurvey', (req, res) => {
+    console.log(req.body)
+})

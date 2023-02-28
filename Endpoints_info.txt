@@ -1,0 +1,19 @@
+# Send Backend request to
+http://localhost:/8000
+
+# end points
+
+User login: http://localhost:/8000/login
+New User Register: http://localhost:/8000/register
+
+Page to display survey list = page 4 of design
+User dashboard: http://localhost:/8000/dashboard
+
+Create New survey: http://localhost:/8000/newSurvey
+Create new question: http://localhost:/8000/newQuestion
+Submit Survey response: http://localhost:/8000/submitSurvey
+
+# for functionalities in dashboard page
+Sort survey (funnel icon): http://localhost:/8000/sort
+filter survey (search word in survey title): http://localhost:/8000/search/
+                    
