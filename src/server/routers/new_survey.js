@@ -12,10 +12,20 @@ surveyRouter.post('/submitSurvey', (req, res) => {
     console.log(req.body)
 })
 
-surveyRouter.post('/sort', (req, res) => {
-    console.log(req.body)
+surveyRouter.get('/sort', (req, res) => {
+    console.log('sort request')
 })
 
-surveyRouter.post('/search/:word', (req, res) => {
+surveyRouter.get('/search/:word', (req, res) => {
     console.log(req.params.word)
 })
+
+surveyRouter.put('/edit/:survey_id', (req, res) => {
+    console.log(req.params.survey_id)
+})
+
+surveyRouter.delete('/delete/:survey_id', (req, res) => {
+    console.log(req.params.survey_id)
+})
+
+module.exports = surveyRouter

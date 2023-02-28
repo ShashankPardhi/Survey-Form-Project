@@ -6,6 +6,7 @@ const app = express()
 mongoose.set('strictQuery', true);
 
 const loginRouter = require('./routers/login_register')
+const surveyRouter = require('./routers/new_survey.js')
 
 const mongo_db_url = 'mongodb://localhost:27017/survey'
 mongoose.connect(mongo_db_url, () => {
@@ -13,6 +14,7 @@ mongoose.connect(mongo_db_url, () => {
 })
 
 app.use(loginRouter)
+app.use(surveyRouter)
 
 app.listen(8000, () => {
     console.log('Back End running...')

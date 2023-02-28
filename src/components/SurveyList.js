@@ -11,28 +11,8 @@ import listIcon from '../images/list.png'
 function SurveyList() {
 
     // just dummy data, remove after back end is setup
-    let surveyList = [
-        {
-            "name": "Test Name",
-            "description": "Test desc",
-            "type": "Test type",
-            "start-date": "test",
-            "end-date": "test",
-            "user-id": 1234,
-            "other-criteria": "test",
-            "image": "test"
-        },
-        {
-            "name": "Test Name",
-            "description": "Test desc",
-            "type": "Test type",
-            "start-date": "test",
-            "end-date": "test",
-            "user-id": 1234,
-            "other-criteria": "test",
-            "image": "test"
-        }
-    ]
+    let surveyListJson = require('./dummyData.json')
+    let surveyList = surveyListJson["data"]
 
     /* let [surveyList, setSurveyList] = useState([])
     
@@ -48,8 +28,8 @@ function SurveyList() {
     let [searchText, setSearchText] = useState('')
     async function startSearchText() {
         if (searchText !== '') {
-            let searchResultData = await fetch(`http://localhost:/8000/search/${searchText}`)
-            let searchResult = await searchResultData.json()
+            let searchResultData = await fetch(`http://localhost:8000/search/${searchText}`)
+            // let searchResult = await searchResultData.json()
             // setSurveyList(searchResult)
         }
 
@@ -58,11 +38,17 @@ function SurveyList() {
     // for sorting post
     async function sortSurvey() {
         if (searchText !== '') {
-            let searchResultData = await fetch(`http://localhost:/8000/sort`)
-            let searchResult = await searchResultData.json()
+            let searchResultData = await fetch(`http://localhost:8000/sort`)
+            // let searchResult = await searchResultData.json()
             // setSurveyList(searchResult)
         }
 
+    }
+
+    // create new survey
+    // put front end link for creating survey page here
+    function createSurvey() {
+        // fetch('http://localhost:3000/')
     }
 
     return <div className="container">
@@ -82,9 +68,9 @@ function SurveyList() {
                     <input type='text' onChange={(e) => setSearchText(e.target.value)} />
                 </div>
                 <div className="icon">
-                    <img src={sortImage} />
+                    <img src={sortImage} onClick={sortSurvey} />
                     <img src={funnel} onClick={startSearchText} />
-                    <button>Create</button>
+                    <button onClick={createSurvey}>Create</button>
                 </div>
             </div>
             <div className="info-bar">
