@@ -11,3 +11,11 @@ surveyRouter.post('/newSurvey', (req, res) => {
 surveyRouter.post('/submitSurvey', (req, res) => {
     console.log(req.body)
 })
+
+surveyRouter.post('/sort', (req, res) => {
+    console.log(req.body)
+})
+
+surveyRouter.post('/search/:word', (req, res) => {
+    console.log(req.params.word)
+})

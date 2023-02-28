@@ -15,5 +15,5 @@ Submit Survey response: http://localhost:/8000/submitSurvey
 
 # for functionalities in dashboard page
 Sort survey (funnel icon): http://localhost:/8000/sort
-filter survey (search word in survey title): http://localhost:/8000/search/
+filter survey (search word in survey title): http://localhost:/8000/search/word
                     

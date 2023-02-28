@@ -4,6 +4,9 @@ import './SurveyList.css'
 import sortImage from '../images/sort.svg'
 import funnel from '../images/funnel.png'
 import searchIcon from '../images/search.png'
+import homeIcon from '../images/home.png'
+import peopleIcon from '../images/people.png'
+import listIcon from '../images/list.png'
 
 function SurveyList() {
 
@@ -38,45 +41,74 @@ function SurveyList() {
         async function fetchData() {
             let surveyListData = await fetch('http://localhost:8000/surveyList')
             setSurveyList(surveyListData)
-            
-            
-           chData()
+ 
         ]) */
 
+    // for search text
+    let [searchText, setSearchText] = useState('')
+    async function startSearchText() {
+        if (searchText !== '') {
+            let searchResultData = await fetch(`http://localhost:/8000/search/${searchText}`)
+            let searchResult = await searchResultData.json()
+            // setSurveyList(searchResult)
+        }
 
-    return <div className="survey-list-container">
-        <div className="header">
-            <div className="header">
-                Survey list
-                <span className="icon" ><img className="icon" src={searchIcon} /></span >
-                <input type='text' />
-            </div>
-            <div className="icon">
-                <img src={sortImage} />
-                <img src={funnel} />
-                <button>Create</button>
-            </div>
+    }
+
+    // for sorting post
+    async function sortSurvey() {
+        if (searchText !== '') {
+            let searchResultData = await fetch(`http://localhost:/8000/sort`)
+            let searchResult = await searchResultData.json()
+            // setSurveyList(searchResult)
+        }
+
+    }
+
+    return <div className="container">
+        <div className="side-bar">
+            <img src={homeIcon} />
+            <img src={peopleIcon} />
+            <img src={listIcon} />
         </div>
-        <div className="info-bar">
-            {/* 
+
+        <div className="survey-list-container">
+            <div className="header">
+                <div className="header">
+                    Survey list
+                    <span className="icon" >
+                        <img src={searchIcon} />
+                    </span >
+                    <input type='text' onChange={(e) => setSearchText(e.target.value)} />
+                </div>
+                <div className="icon">
+                    <img src={sortImage} />
+                    <img src={funnel} onClick={startSearchText} />
+                    <button>Create</button>
+                </div>
+            </div>
+            <div className="info-bar">
+                {/* 
             The bar above the list of surveys, with text like Name, Description etc 
              */}
-            <div>Name</div >
-            <div>Description</div >
-            <div>Type</div >
-            <div>Start Date</div >
-            <div>End Date</div >
-            <div>Actions</div >
-        </div >
-        <div className="survey-list">
-            <ul>
-                {surveyList.map((item, index) => {
-                    return <li key={index}>
-                        <SurveyListItem listItem={item} />
-                    </li>
-                })}
-            </ul>
+                <div>Name</div >
+                <div>Description</div >
+                <div>Type</div >
+                <div>Start Date</div >
+                <div>End Date</div >
+                <div>Actions</div >
+            </div >
+            <div className="survey-list">
+                <ul>
+                    {surveyList.map((item, index) => {
+                        return <li key={index}>
+                            <SurveyListItem listItem={item} />
+                        </li>
+                    })}
+                </ul>
+            </div>
         </div>
+
     </div>
 
 }
