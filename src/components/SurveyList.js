@@ -1,12 +1,11 @@
 import { useState, useEffect } from "react"
 import SurveyListItem from "./SurveyListItem"
+import SideBar from "./SideBar"
 import './SurveyList.css'
 import sortImage from '../images/sort.svg'
 import funnel from '../images/funnel.png'
 import searchIcon from '../images/search.png'
-import homeIcon from '../images/home.png'
-import peopleIcon from '../images/people.png'
-import listIcon from '../images/list.png'
+
 
 function SurveyList() {
 
@@ -52,12 +51,7 @@ function SurveyList() {
     }
 
     return <div className="container">
-        <div className="side-bar">
-            <img src={homeIcon} />
-            <img src={peopleIcon} />
-            <img src={listIcon} />
-        </div>
-
+        <SideBar />
         <div className="survey-list-container">
             <div className="header">
                 <div className="header">

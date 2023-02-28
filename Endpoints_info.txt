@@ -1,5 +1,5 @@
 # front end points for user to hit
-(will be added using BrowserRouter)
+(will be added using BrowserRouter in main App.js file)
 Homepage (page 1) ==> '/'
 Register new user (page 2-3)==> '/register'
 after successful login (page 4) ==> '/dashboard'
@@ -16,8 +16,7 @@ http://localhost:8000
 User login: http://localhost:8000/login
 New User Register: http://localhost:8000/register
 
-Page to display survey list = page 4 of design
-User dashboard: http://localhost:8000/dashboard
+Request for list of surveys: http://localhost:8000//allSurveys
 
 Send Create New survey request: http://localhost:8000/newSurvey
 Send Create new questions request: http://localhost:8000/newQuestion

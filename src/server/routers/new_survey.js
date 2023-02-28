@@ -12,6 +12,10 @@ surveyRouter.post('/submitSurvey', (req, res) => {
     console.log(req.body)
 })
 
+surveyRouter.get('/allSurveys', (req, res) => {
+    console.log('sort request')
+})
+
 surveyRouter.get('/sort', (req, res) => {
     console.log('sort request')
 })
