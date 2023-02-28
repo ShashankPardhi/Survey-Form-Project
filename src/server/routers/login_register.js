@@ -26,7 +26,7 @@ loginRouter.post('/login', (req, res) => {
         if (isDataCorrect === null) {
             res.end('Incorrect email or password')
         } else {
-            res.end(`Welcome ${isDataCorrect.username}`)
+            res.end(`ok`)
         }
 
     }
@@ -57,7 +57,8 @@ loginRouter.post('/register', (req, res) => {
             password: password
         })
         await newUser.save()
-        res.end(`Added ${username}`)
+        comsole.log(`Added ${username}`)
+        res.end('ok')
     }
 
     addUser()
