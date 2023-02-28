@@ -27,4 +27,17 @@ Sort survey (funnel icon): http://localhost:8000/sort
 filter survey (search word in survey title): http://localhost:8000/search/word
 edit survey: http://localhost:8000/edit/survey_id
 delete survey: http://localhost:8000/delete/survey_id
+
+======================================================================
+
+front end
+
+shashank : homepage, login, register
+sayo: dashboard (survey list)
+praful: create survey, create question
+
+back end
+
+sayo: login (router,db), register (router,db)
+praful: question (router, db), survey(router, db)
                     

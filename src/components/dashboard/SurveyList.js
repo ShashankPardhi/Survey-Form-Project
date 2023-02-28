@@ -2,9 +2,9 @@ import { useState, useEffect } from "react"
 import SurveyListItem from "./SurveyListItem"
 import SideBar from "./SideBar"
 import './SurveyList.css'
-import sortImage from '../images/sort.svg'
-import funnel from '../images/funnel.png'
-import searchIcon from '../images/search.png'
+import sortImage from '../../images/sort.svg'
+import funnel from '../../images/funnel.png'
+import searchIcon from '../../images/search.png'
 
 
 function SurveyList() {

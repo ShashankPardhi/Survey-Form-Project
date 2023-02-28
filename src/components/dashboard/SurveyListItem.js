@@ -1,6 +1,6 @@
 import './SurveyListItem.css'
-import pencil from "../images/edit_pencil.png"
-import trash_can from "../images/trash_can.png"
+import pencil from "../../images/edit_pencil.png"
+import trash_can from "../../images/trash_can.png"
 
 function SurveyListItem({ listItem }) {
 
