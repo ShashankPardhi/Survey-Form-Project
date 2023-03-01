@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom"
 
 const Login = ({ updateUser }) => {
 
-    const history = useNavigate()
+    const navigate = useNavigate()
 
     const [user, setUser] = useState({
         email: "",
@@ -23,9 +23,15 @@ const Login = ({ updateUser }) => {
     const login = () => {
         axios.post("http://localhost:8000/login", user)
             .then(res => {
-                alert(res.data.message)
-                updateUser(res.data.user)
-                history.push("/")
+                console.log(res)
+                // updateUser(res.data.user)
+                if (res.data === "ok") {
+                    navigate('/dashboard')
+                } else {
+                    alert(res.data.message)
+                    navigate("/")
+                }
+
             })
     }
 
@@ -36,7 +42,7 @@ const Login = ({ updateUser }) => {
             <input type="password" name="password" value={user.password} onChange={handleChange} placeholder="Enter your Password" ></input>
             <div className="button" onClick={login}>Login</div>
             <div>or</div>
-            <div className="button" onClick={() => history.push("/register")}>Register</div>
+            <div className="button" onClick={() => navigate("/register")}>Register</div>
         </div>
     )
 }

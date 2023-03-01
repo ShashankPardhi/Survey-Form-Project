@@ -1,8 +1,10 @@
 const express = require('express')
 const loginRouter = express.Router()
 let userModel = require('../models/user.js')
+const cors = require('cors')
 
 loginRouter.use(express.json())
+loginRouter.use(cors())
 
 // user login
 loginRouter.post('/login', (req, res) => {
@@ -34,6 +36,7 @@ loginRouter.post('/login', (req, res) => {
 
 // register new user
 loginRouter.post('/register', (req, res) => {
+    console.log(req.body)
     let { username, email, phone, profession, password } = req.body
 
     // validation of user input
@@ -57,8 +60,8 @@ loginRouter.post('/register', (req, res) => {
             password: password
         })
         await newUser.save()
-        comsole.log(`Added ${username}`)
-        res.end('ok')
+        // console.log(`Added ${username}`)
+        res.end()
     }
 
     addUser()

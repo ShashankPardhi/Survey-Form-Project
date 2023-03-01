@@ -5,11 +5,13 @@ import { useNavigate } from "react-router-dom"
 
 const Register = () => {
 
-    const history = useNavigate()
+    const navigate = useNavigate()
 
     const [user, setUser] = useState({
-        name: "",
+        username: "",
         email: "",
+        phone: '',
+        profession: '',
         password: "",
         reEnterPassword: ""
     })
@@ -23,12 +25,13 @@ const Register = () => {
     }
 
     const register = () => {
-        const { name, email, password, reEnterPassword } = user
-        if (name && email && password && (password === reEnterPassword)) {
+        const { username, email, phone, profession, password, reEnterPassword } = user
+
+        if (username && email && password && (password === reEnterPassword)) {
             axios.post("http://localhost:8000/register", user)
                 .then(res => {
-                    alert(res.data.message)
-                    history.push("/login")
+                    // alert(res.data.message)
+                    navigate("/")
                 })
         } else {
             alert("invlid input")
@@ -38,15 +41,16 @@ const Register = () => {
 
     return (
         <div className="register">
-            {console.log("User", user)}
             <h1>Register</h1>
-            <input type="text" name="name" value={user.name} placeholder="Your Name" onChange={handleChange}></input>
+            <input type="text" name="username" value={user.username} placeholder="Your Name" onChange={handleChange}></input>
             <input type="text" name="email" value={user.email} placeholder="Your Email" onChange={handleChange}></input>
-            <input type="password" name="password" value={user.password} placeholder="Your Password" onChange={handleChange}></input>
-            <input type="password" name="reEnterPassword" value={user.reEnterPassword} placeholder="Re-enter Password" onChange={handleChange}></input>
+            <input type="number" name="phone" value={user.phone} placeholder="Your Phone" onChange={handleChange}></input>
+            <input type="text" name="profession" value={user.profession} placeholder="Your Profession" onChange={handleChange}></input>
+            <input type="text" name="password" value={user.password} placeholder="Your Password" onChange={handleChange}></input>
+            <input type="text" name="reEnterPassword" value={user.reEnterPassword} placeholder="Re-enter Password" onChange={handleChange}></input>
             <div className="button" onClick={register} >Register</div>
             <div>or</div>
-            <div className="button" onClick={() => history.push("/login")}>Login</div>
+            <div className="button" onClick={() => navigate("/")}>Login</div>
         </div>
     )
 }

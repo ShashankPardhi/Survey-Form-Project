@@ -11,12 +11,12 @@ function App() {
   const [user, setLoginUser] = useState({})
 
   useEffect(() => {
-    setLoginUser(JSON.parse(localStorage.getItem("MyUser")))
+    // setLoginUser(JSON.parse(localStorage.getItem("MyUser")))
   }, [])
 
   const updateUser = (user) => {
-    localStorage.setItem("MyUser", JSON.stringify(user))
-    setLoginUser(user)
+    /* localStorage.setItem("MyUser", JSON.stringify(user))
+    setLoginUser(user) */
   }
 
 
@@ -26,12 +26,12 @@ function App() {
 
     <BrowserRouter>
       <Routes>
-        <Route exact path="/"
+        {/* <Route exact path="/"
           element={
             user && user._id ? <Homepage updateUser={updateUser} /> : <Login updateUser={updateUser} />
           }>
-        </Route>
-        <Route path="/login" element={<Login updateUser={updateUser} />}></Route>
+        </Route> */}
+        <Route path="/" element={<Login updateUser={updateUser} />}></Route>
         <Route path="/register" element={<Register />}></Route>
         <Route path="/dashboard" element={<SurveyList />}></Route>
       </Routes>

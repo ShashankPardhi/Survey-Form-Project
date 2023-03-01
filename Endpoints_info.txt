@@ -40,4 +40,11 @@ back end
 
 sayo: login (router,db), register (router,db)
 praful: question (router, db), survey(router, db)
+
+======================================================================
+Changes needed:
+
+Login.js ==> what will be axios call response from backend?
+Register ==> send request of user object, what response
+Homepage ==> Clashing with dashboard (survey list component)
                     
