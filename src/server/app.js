@@ -8,14 +8,13 @@ mongoose.set('strictQuery', true);
 
 // importing all routers
 let loginRouter = require('./routers/login_register')
-/* const surveyRouter = require('./routers/new_survey.js')
-const questionRouter = require('./routers/question.js') */
+const surveyRouter = require('./routers/survey.js')
+const questionRouter = require('./routers/question')
 
 app.use(loginRouter)
-
-/* app.use(surveyRouter)
+app.use(surveyRouter)
 app.use(questionRouter)
- */
+
 
 // connect database
 const mongo_db_url = 'mongodb://localhost:27017/survey'

@@ -3,7 +3,7 @@ import "./login.css"
 import axios from "axios"
 import { useNavigate } from "react-router-dom"
 
-const Login = ({ updateUser }) => {
+const Login = () => {
 
     const navigate = useNavigate()
 
@@ -23,9 +23,8 @@ const Login = ({ updateUser }) => {
     const login = () => {
         axios.post("http://localhost:8000/login", user)
             .then(res => {
-                console.log(res)
-                // updateUser(res.data.user)
                 if (res.data === "ok") {
+                    localStorage.setItem("isLoggedIn", true)
                     navigate('/dashboard')
                 } else {
                     alert(res.data.message)

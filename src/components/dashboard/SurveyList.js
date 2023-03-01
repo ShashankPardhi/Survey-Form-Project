@@ -1,58 +1,79 @@
 import { useState, useEffect } from "react"
+import { useNavigate } from "react-router-dom"
 import SurveyListItem from "./SurveyListItem"
 import SideBar from "./SideBar"
 import './SurveyList.css'
 import sortImage from '../../images/sort.svg'
 import funnel from '../../images/funnel.png'
 import searchIcon from '../../images/search.png'
-
+import axios from 'axios'
 
 function SurveyList() {
 
-    // just dummy data, remove after back end is setup
-    let surveyListJson = require('./dummyData.json')
-    let surveyList = surveyListJson["data"]
+    const navigate = useNavigate()
 
-    /* let [surveyList, setSurveyList] = useState([])
-    
+    // ================================= Check if user is logged in =================================
     useEffect(() => {
-        // fetch survey list data when component renders for the first time
-        async function fetchData() {
-            let surveyListData = await fetch('http://localhost:8000/surveyList')
-            setSurveyList(surveyListData)
- 
-        ]) */
+        let loginStatus = localStorage.getItem("isLoggedIn")
+        if (loginStatus === null) {
+            // user not logged in, redirect to login page
+            navigate('/')
+        }
+    }, [])
 
-    // for search text
+    // ================================= Fetch surveys from database =================================
+    let [surveyList, setSurveyList] = useState([])
+    useEffect(() => {
+        async function fetchSurveys() {
+            let response = await axios.get('http://localhost:8000/allSurveys')
+            let surveyList = await response.data
+            setSurveyList(surveyList)
+        }
+        fetchSurveys()
+    }, [])
+
+    // ================================= Search survey name =================================
     let [searchText, setSearchText] = useState('')
     async function startSearchText() {
         if (searchText !== '') {
-            let searchResultData = await fetch(`http://localhost:8000/search/${searchText}`)
-            // let searchResult = await searchResultData.json()
-            // setSurveyList(searchResult)
+            let response = await axios.post(`http://localhost:8000/search`, {
+                word: searchText
+            })
+            let searchResult = response.data
+            setSurveyList(searchResult)
+        } else {
+            let response = await axios.get(`http://localhost:8000/allSurveys`)
+            let searchResult = response.data
+            setSurveyList(searchResult)
         }
 
     }
-
-    // for sorting post
+    // ================================= Sort surveys by name =================================
     async function sortSurvey() {
-        if (searchText !== '') {
-            let searchResultData = await fetch(`http://localhost:8000/sort`)
-            // let searchResult = await searchResultData.json()
-            // setSurveyList(searchResult)
-        }
-
+        let response = await axios.get(`http://localhost:8000/sort`)
+        let searchResult = response.data
+        setSurveyList(searchResult)
     }
 
-    // create new survey
-    // put front end link for creating survey page here
+    // ================================= Redirect to Create Survey Page =================================
     function createSurvey() {
-        // fetch('http://localhost:3000/')
+        navigate()
+    }
+
+    // ================================= Log Out user =================================
+    function logOut() {
+        navigate('/')
+        localStorage.removeItem("isLoggedIn")
     }
 
     return <div className="container">
         <SideBar />
         <div className="survey-list-container">
+            <div className="nav-bar">
+                <div className="logo">LOGO</div>
+                <div className="log-out" onClick={logOut}>Log Out</div>
+            </div>
+
             <div className="header">
                 <div className="header">
                     Survey list
@@ -61,16 +82,17 @@ function SurveyList() {
                     </span >
                     <input type='text' onChange={(e) => setSearchText(e.target.value)} />
                 </div>
+
                 <div className="icon">
-                    <img src={sortImage} onClick={sortSurvey} />
-                    <img src={funnel} onClick={startSearchText} />
+                    <button onClick={startSearchText}>Search</button>
+                    <button onClick={sortSurvey}>Sort</button>
+                    {/* <img src={sortImage} onClick={sortSurvey} />
+                    <img src={funnel} onClick={startSearchText} /> */}
                     <button onClick={createSurvey}>Create</button>
                 </div>
             </div>
+
             <div className="info-bar">
-                {/* 
-            The bar above the list of surveys, with text like Name, Description etc 
-             */}
                 <div>Name</div >
                 <div>Description</div >
                 <div>Type</div >
@@ -78,6 +100,7 @@ function SurveyList() {
                 <div>End Date</div >
                 <div>Actions</div >
             </div >
+
             <div className="survey-list">
                 <ul>
                     {surveyList.map((item, index) => {

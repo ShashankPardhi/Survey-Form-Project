@@ -13,11 +13,11 @@ function SurveyListItem({ listItem }) {
     }
 
     return <div className="survey-list-item">
-        <div>{listItem.name}</div >
+        <div>{listItem.surveyName}</div >
         <div>{listItem.description}</div >
         <div>{listItem.type}</div >
-        <div>{listItem["start-date"]}</div >
-        <div>{listItem["end-date"]}</div >
+        <div>{listItem["startDate"]}</div >
+        <div>{listItem["endDate"]}</div >
         <div className='icon actions'>
             <a href='#'>
                 <img src={pencil} onClick={editSurvey} />

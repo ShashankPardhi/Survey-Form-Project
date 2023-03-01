@@ -12,23 +12,22 @@ loginRouter.post('/login', (req, res) => {
 
     // validation of user input
     if (email === '' || password === '') {
-        res.end("Email and password must be non empty")
-    } else if (password.length < 8) {
-        res.end("Password must have minimum 8 characters")
+        res.end("Email and password can not be empty")
     } else {
         loginUser()
     }
 
+    // fetch data from database
     async function loginUser() {
-        let isDataCorrect = await userModel.findOne({
+        let userData = await userModel.findOne({
             email: email,
             password: password
         })
 
-        if (isDataCorrect === null) {
+        if (userData === null) {
             res.end('Incorrect email or password')
         } else {
-            res.end(`ok`)
+            res.end('ok')
         }
 
     }
@@ -45,12 +44,13 @@ loginRouter.post('/register', (req, res) => {
         res.end('All fields are mandatory')
     } else if (password.length < 8) {
         res.end("Password must have minimum 8 characters")
-    } else if (phone.length < 10) {
-        res.end("Phone number must have at least 10 digits")
+    } else if (phone.length !== 10) {
+        res.end("Phone number must have 10 digits")
     } else {
         addUser()
     }
 
+    // add user data to database
     async function addUser() {
         let newUser = new userModel({
             username: username,
@@ -60,8 +60,7 @@ loginRouter.post('/register', (req, res) => {
             password: password
         })
         await newUser.save()
-        // console.log(`Added ${username}`)
-        res.end()
+        res.end('Registration successful')
     }
 
     addUser()
