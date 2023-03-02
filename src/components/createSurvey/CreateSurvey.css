@@ -1,138 +1,131 @@
-.navbar {
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  background-color: #bbddff;
-  height: 60px;
+* {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
 
-.sidebar {
-  float: left;
-  width: 40px;
+/* ======================== NavBar ======================== */
+.create-survey-navbar {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  height: 100vh;
-  background-color: rgb(71, 221, 255);
+  border-bottom: 1px solid black;
+  height: 60px;
+  font-size: 20px;
+}
+
+.create-survey-navbar > * {
+  display: inline-block;
+  width: 250px;
+  text-align: center;
 }
 
 .log-out {
   cursor: pointer;
 }
 
+/* ======================== Side Bar ======================== */
+.sidebar {
+  float: left;
+  width: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #278df1;
+}
+
+.sidebar > * {
+  margin: 15px 0;
+}
+
+/* ======================== Header ======================== */
 .createhead {
   display: flex;
   justify-content: space-between;
-  margin-top: 80px;
-  margin-left: 250px;
-  margin-right: 250px;
+  width: 60vw;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
   border-bottom: 1px solid rgb(215, 215, 215);
 }
 .createhead h1 {
-  font-size: 20px;
-  font-family: montserrat;
+  font-size: 30px;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   font-weight: 500;
+}
+.header-buttons {
+  width: 20vw;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
 }
 .cancelbtn {
   width: 100px;
-  height: 30px;
-  margin-right: 15px;
+  height: 40px;
   background-color: white;
   border: 1px solid #278df1;
   color: #278df1;
   border-radius: 2px;
-  margin-top: 11px;
   cursor: pointer;
 }
 .nextbtn {
   width: 100px;
-  height: 30px;
+  height: 40px;
   background-color: #278df1;
   border: none;
   color: white;
   border-radius: 2px;
   cursor: pointer;
 }
+/* ======================== Main ======================== */
+.create-survey-main {
+  width: 60vw;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  justify-content: center;
+}
 .main1 {
-  display: flex;
-  justify-content: space-between;
   margin-top: 30px;
-  margin-left: 250px;
-  margin-right: 250px;
-  font-family: montserrat;
+  width: 45%;
+  border-right: 1px solid black;
 }
-.main1 h2 {
-  font-size: 14px;
-  font-weight: 500;
-  margin-bottom: 8px;
-}
-#namein {
-  width: 370px;
-  height: 27px;
-  border: 1px solid gray;
-  border-radius: 2px;
-}
-#datein {
-  width: 130px;
-  height: 27px;
-  color: gray;
-  border: 1px solid gray;
-  border-radius: 2px;
-}
-.main2 {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 30px;
-  margin-left: 250px;
-  margin-right: 250px;
-  font-family: montserrat;
-}
-.main2 h2 {
-  font-size: 14px;
-  font-weight: 500;
-  margin-bottom: 8px;
-}
+
+#namein,
 #descin,
-#critin {
-  width: 370px;
-  height: 130px;
-  border: 1px solid gray;
-  border-radius: 2px;
-}
-.main3 {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 30px;
-  margin-left: 250px;
-  margin-right: 250px;
-  font-family: montserrat;
-}
-.main3 h2 {
-  font-size: 14px;
-  font-weight: 500;
-  margin-bottom: 8px;
-}
 #surveyselect {
-  width: 130px;
-  height: 27px;
-  color: gray;
-  border: 1px solid gray;
-  border-radius: 2px;
+  height: 30px;
+  padding: 0;
+  width: 80%;
 }
+
+.main2 {
+  margin-top: 30px;
+  width: 45%;
+  margin-left: auto;
+}
+
+.datein,
+#critin {
+  height: 30px;
+  padding: 0;
+  width: 80%;
+}
+
+#uploadlabel {
+  display: inline-block;
+  text-align: center;
+  width: 80%;
+  height: 60px;
+  border: 1px solid black;
+  background-image: linear-gradient(
+    90deg,
+    rgb(211, 211, 211),
+    white,
+    rgb(211, 211, 211)
+  );
+}
+
 #upload {
   display: none;
-}
-#uploadlabel {
-  border: 1px solid gray;
-  width: 200px;
-  padding-right: 176px;
-  padding-bottom: 150px;
-  border-radius: 2px;
-  color: gray;
-  cursor: pointer;
-  text-align: center;
-}
-.log {
-  margin-right: 10px;
 }

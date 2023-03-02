@@ -2,6 +2,7 @@ import './QuestionTable1.css'
 import { useState, useEffect, useRef } from 'react'
 import axios from 'axios'
 import CreateQuestion from './CreateQuestion'
+import Sidebar from '../dashboard/SideBar'
 
 function QuestionTable1() {
 
@@ -69,6 +70,7 @@ function QuestionTable1() {
     }
 
     return <div className="question-table">
+        <Sidebar />
         <CreateQuestion preview={preview} setPreview={setPreview} />
         <ul>
             {/* ========================== display question list ========================== */}
@@ -81,7 +83,7 @@ function QuestionTable1() {
                     <div className='question-item-options'>
                         {/* ========================== display option list ========================== */}
                         {questionItem.options.map((options_item) => {
-                            return <><input type='radio' /> {options_item} <br /></>
+                            return <><input type='radio' name='test' /> {options_item} <br /></>
                         })}
                     </div>
                     <div className='question-item-msq-option'>
@@ -93,23 +95,33 @@ function QuestionTable1() {
             })}
             {/* ========================== Add New question ========================== */}
 
-            {!preview ? <li>
-                Question &nbsp;
-                <input type='text' placeholder='Type your question' onChange={e => changeQuestion(e)} /> <br />
+            {!preview ? <li className='new-question-item'>
+                <div className='new-question-item-row'>
+                    Question &nbsp;
+                    <input type='text' placeholder='Type your question' onChange={e => changeQuestion(e)} /> <br />
+                </div>
 
                 {/* ========================== Add new Option to current question ========================== */}
-                <ul>
-                    {optionsList.map((item, index) => {
-                        return <li key={index}>
-                            {item} &nbsp;
-                            <button className='remove-Option' onClick={() => removeOption(index)}>Delete</button>
-                        </li>
-                    })}
-                </ul>
-                <input type='text' placeholder='Type your option' onChange={e => changeOption(e)} /> &nbsp;
-                <button className='add-Option' onClick={AddOption}>Add</button>
-                <br />
-                <button className='add-Question' onClick={addQuestion}>Add Question</button>
+                <div>
+                    <ul>
+                        {optionsList.map((item, index) => {
+                            return <li key={index} className='new-question-item-row'>
+                                <span>{item} &nbsp;</span>
+                                <button className='remove-Option' onClick={() => removeOption(index)}>-</button>
+                            </li>
+                        })}
+                    </ul>
+                </div>
+
+                <div className='new-question-item-row'>
+                    <input type='text' id='new-question-option-input' placeholder='Type your option' onChange={e => changeOption(e)} /> &nbsp;
+                    <button className='add-Option' onClick={AddOption}>+</button>
+                </div>
+                <div className='new-question-item-row'>
+                    <button className='add-Question' onClick={addQuestion}>Add Question</button>
+                </div>
+
+
             </li> : <></>}
 
         </ul>

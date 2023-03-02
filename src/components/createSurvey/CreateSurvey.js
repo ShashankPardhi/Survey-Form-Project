@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from "react"
 import './CreateSurvey.css'
 import { Link } from 'react-router-dom';
-import { AiFillHome } from "react-icons/ai";
-import { FaList } from "react-icons/fa";
-import { AiOutlineTeam } from "react-icons/ai";
 import { useNavigate } from 'react-router-dom'
 import axios from "axios";
+import SideBar from "../dashboard/SideBar";
 
 const CreateSurvey = () => {
     // ======================= Log out functionality =======================
@@ -75,21 +73,19 @@ const CreateSurvey = () => {
     // ======================= Rendered Output =======================
     return (
         <div>
-            <nav className='navbar'>
+            {/* ================ Nav Bar at the top ================ */}
+            <nav className='create-survey-navbar'>
                 <div className='logo'>LOGO</div>
-                {/* <div className='userprofile'></div> */}
-                <div className="log-out" onClick={logout}>LogOut</div>
+                <div className="log-out" onClick={logout}>Log Out</div>
             </nav>
 
-            <nav className='sidebar'>
-                <div className='homediv'> <AiFillHome className='home' /> </div>
-                <div className='groupdiv'> <AiOutlineTeam className='group' /> </div>
-                <div className='taskdiv'> <FaList className='task' /> </div>
-            </nav>
+            {/* ================ Side bar ================ */}
+            <SideBar />
 
+            {/* ================ header ================ */}
             <header className="createhead">
                 <h1>Create Survey</h1>
-                <div>
+                <div className="header-buttons">
                     <Link to="/dashboard">
                         <button className="cancelbtn">Cancel</button>
                     </Link>
@@ -97,32 +93,17 @@ const CreateSurvey = () => {
                 </div>
             </header>
 
-            <main>
+            {/* ================ main ================ */}
+            <main className="create-survey-main">
                 <div className="main1">
                     <div>
                         <h2>Name</h2>
-                        <input id="namein" type="text" placeholder="Name here" name="surveyName" onChange={(e) => ChangeSurveyName(e)} />
+                        <input id="namein" type="text" placeholder="" name="surveyName" onChange={(e) => ChangeSurveyName(e)} />
                     </div>
-                    <div>
-                        <h2>Start Date</h2>
-                        <input id="datein" type="date" onChange={(e) => ChangeStartDate(e)} />
-                    </div>
-                    <div>
-                        <h2>End Date</h2>
-                        <input id="datein" type="date" onChange={(e) => ChangeEndDate(e)} />
-                    </div>
-                </div>
-                <div className="main2">
                     <div>
                         <h2>Description</h2>
-                        <input id="descin" type="text" placeholder="Description" onChange={(e) => ChangeDescription(e)} />
+                        <input id="descin" type="text" placeholder="" onChange={(e) => ChangeDescription(e)} />
                     </div>
-                    <div>
-                        <h2>Other Criteria</h2>
-                        <input id="critin" type="text" placeholder="Enter Here" onChange={(e) => ChangeOtherCriteria(e)} />
-                    </div>
-                </div>
-                <div className="main3">
                     <div>
                         <h2>Type of Survey</h2>
                         <select name="Select" id="surveyselect" onChange={(e) => ChangeType(e)}>
@@ -131,6 +112,20 @@ const CreateSurvey = () => {
                             <option value="Image">Image</option>
                             <option value="Text">Text</option>
                         </select>
+                    </div>
+                </div>
+                <div className="main2">
+                    <div>
+                        <h2>Start Date</h2>
+                        <input className="datein" type="date" onChange={(e) => ChangeStartDate(e)} />
+                    </div>
+                    <div>
+                        <h2>End Date</h2>
+                        <input className="datein" type="date" onChange={(e) => ChangeEndDate(e)} />
+                    </div>
+                    <div>
+                        <h2>Other Criteria</h2>
+                        <input id="critin" type="text" placeholder="" onChange={(e) => ChangeOtherCriteria(e)} />
                     </div>
                     <div>
                         <h2>Upload Image</h2>

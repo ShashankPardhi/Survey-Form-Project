@@ -11,13 +11,9 @@ function Navbar() {
   }
 
   return (
-    <nav className="navbar">
-      <div className="navbar-left">
-        <span className="navbar-text">Logo</span>
-      </div>
-      <div className="navbar-right">
-        <button className="navbar-button" onClick={logOut}>Log-out</button>
-      </div>
+    <nav className="create-question-navbar">
+      <div>LOGO</div>
+      <div className="log-out" onClick={logOut}>Log Out</div>
     </nav>
   );
 }

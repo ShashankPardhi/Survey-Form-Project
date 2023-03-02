@@ -67,49 +67,44 @@ function SurveyList() {
     }
 
     return <div className="container">
-        <SideBar />
         <div className="survey-list-container">
             <div className="nav-bar">
                 <div className="logo">LOGO</div>
                 <div className="log-out" onClick={logOut}>Log Out</div>
             </div>
-
+            <SideBar />
             <div className="header">
-                <div className="header">
-                    Survey list
-                    <span className="icon" >
-                        <img src={searchIcon} />
-                    </span >
-                    <input type='text' onChange={(e) => setSearchText(e.target.value)} />
-                </div>
+                Survey list
+                <span className="icon" >
+                    <img src={searchIcon} />
+                </span >
+                <input type='text' id='survey-list-search-input' onChange={(e) => setSearchText(e.target.value)} />
+                <button className="survey-list-header-buttons" id="survey-list-search" onClick={startSearchText}>Search</button>
+                <button className="survey-list-header-buttons" id="survey-list-sort" onClick={sortSurvey}>Sort</button>
+                <button className="survey-list-header-buttons" id="survey-list-create" onClick={createSurvey}>Create</button>
 
-                <div className="icon">
-                    <button onClick={startSearchText}>Search</button>
-                    <button onClick={sortSurvey}>Sort</button>
-                    {/* <img src={sortImage} onClick={sortSurvey} />
-                    <img src={funnel} onClick={startSearchText} /> */}
-                    <button onClick={createSurvey}>Create</button>
+            </div>
+            <div className="info-surveyList">
+                <div className="info-bar">
+                    <div>Name</div >
+                    <div>Description</div >
+                    <div>Type</div >
+                    <div>Start Date</div >
+                    <div>End Date</div >
+                    <div>Actions</div >
+                </div >
+                <div className="survey-list">
+                    <ul>
+                        {surveyList.map((item, index) => {
+                            return <li key={index}>
+                                <SurveyListItem listItem={item} />
+                            </li>
+                        })}
+                    </ul>
                 </div>
             </div>
 
-            <div className="info-bar">
-                <div>Name</div >
-                <div>Description</div >
-                <div>Type</div >
-                <div>Start Date</div >
-                <div>End Date</div >
-                <div>Actions</div >
-            </div >
 
-            <div className="survey-list">
-                <ul>
-                    {surveyList.map((item, index) => {
-                        return <li key={index}>
-                            <SurveyListItem listItem={item} />
-                        </li>
-                    })}
-                </ul>
-            </div>
         </div>
 
     </div>

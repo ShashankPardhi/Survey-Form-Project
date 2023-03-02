@@ -37,7 +37,7 @@ function SurveyListItem({ listItem }) {
             <div>{listItem["startDate"]}</div >
             <div>{listItem["endDate"]}</div >
             <div className='icon actions'>
-                <button onClick={viewSurvey}>
+                <button id='survey-list-item-view' onClick={viewSurvey}>
                     {viewQuestions ? 'Close' : 'View'}
                 </button>
                 <a href='#'>

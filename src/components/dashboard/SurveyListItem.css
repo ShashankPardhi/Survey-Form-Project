@@ -4,7 +4,8 @@
   justify-content: space-evenly;
   align-items: center;
   text-align: center;
-  border: 1px solid black;
+  margin: 10px 0;
+  background-color: #278cf11b;
 }
 
 .survey-list-item > * {
@@ -12,7 +13,16 @@
 }
 
 .survey-list-item:hover {
-  background-color: rgb(189, 246, 249);
+  border-bottom: 1px solid #278df1;
+  border-top: 1px solid #278df1;
+}
+
+#survey-list-item-view {
+  background-color: #278df1;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  color: white;
 }
 
 ul {
