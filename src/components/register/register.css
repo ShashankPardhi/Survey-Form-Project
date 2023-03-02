@@ -1,3 +1,22 @@
+body {
+  background-image: url("../../images/background.jpg");
+  background-repeat: none;
+}
+
+.register-container {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.register-flavor-text {
+  padding-top: 300px;
+  margin-left: 10vw;
+  font-size: 50px;
+  text-align: center;
+  width: 500px;
+  text-align: center;
+}
+
 .register {
   width: 400px;
   margin-top: 150px;

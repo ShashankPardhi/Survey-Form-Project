@@ -38,7 +38,12 @@ const Register = () => {
 
     }
 
-    return (
+    return (<div className="register-container">
+        <div className="register-flavor-text">
+            Welcome to
+            Create Survey
+            WebSite
+        </div>
         <div className="register">
             <h1>Register</h1>
             <input type="text" name="username" value={user.username} placeholder="Your Name" onChange={handleChange}></input>
@@ -51,7 +56,10 @@ const Register = () => {
             <div>or</div>
             <div className="button" onClick={() => navigate("/")}>Login</div>
         </div>
+    </div>
     )
+
+
 }
 
 export default Register
