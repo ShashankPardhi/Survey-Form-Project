@@ -7,17 +7,6 @@ const cors = require('cors')
 surveyRouter.use(express.json({ limit: '100mb' }))
 surveyRouter.use(cors())
 
-/* // get theme image from data base
-surveyRouter.get('/theme', (req, res) => {
-
-    async function getImage() {
-        let { image } = await surveyModel.findOne()
-        res.end(image)
-    }
-
-    getImage()
-}) */
-
 surveyRouter.get('/allSurveys', (req, res) => {
     // fins all surveys with the same user id
     async function findSurveyByUser() {
@@ -71,11 +60,11 @@ surveyRouter.post('/search', (req, res) => {
     findSurveyByWord()
 })
 
-surveyRouter.put('/edit/:survey_id', (req, res) => {
+/* surveyRouter.put('/edit/:survey_id', (req, res) => {
     // make back end call using survey id
     // then send survey object for edit
     console.log(req.params.survey_id)
-})
+}) */
 
 surveyRouter.delete('/delete/:survey_id', (req, res) => {
     // make back end call to delete survey
@@ -87,9 +76,6 @@ surveyRouter.delete('/delete/:survey_id', (req, res) => {
     deleteSurvey()
 })
 
-// when someone fuills up the survey
-surveyRouter.post('/submitSurvey', (req, res) => {
-    console.log(req.body)
-})
+
 
 module.exports = surveyRouter
