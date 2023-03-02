@@ -28,15 +28,15 @@ function SurveyListItem({ listItem }) {
 
     return <>
         <div className="survey-list-item">
-            <div>{listItem.surveyName}</div >
+            <div>{listItem.surveyName}
+                &nbsp; &nbsp;
+                <img src={listItem.image} width='30' />
+            </div>
             <div>{listItem.description}</div >
             <div>{listItem.type}</div >
             <div>{listItem["startDate"]}</div >
             <div>{listItem["endDate"]}</div >
             <div className='icon actions'>
-                {/* <a href='#'>
-                <img src={pencil} onClick={editSurvey} />
-            </a> */}
                 <button onClick={viewSurvey}>
                     {viewQuestions ? 'Close' : 'View'}
                 </button>

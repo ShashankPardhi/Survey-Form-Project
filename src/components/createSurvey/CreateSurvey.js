@@ -62,6 +62,16 @@ const CreateSurvey = () => {
             })
     }
 
+    // ======================= Change image to string =======================
+    function convertImage(event) {
+        let file = event.target.files[0]
+        let reader = new FileReader()
+        reader.onloadend = function () {
+            setNewSurvey({ ...newSurvey, image: reader.result })
+        }
+        reader.readAsDataURL(file)
+    }
+
     // ======================= Rendered Output =======================
     return (
         <div>
@@ -124,7 +134,7 @@ const CreateSurvey = () => {
                     </div>
                     <div>
                         <h2>Upload Image</h2>
-                        <label id="uploadlabel" htmlFor="upload" onChange={(e) => ChangeImage(e)}>
+                        <label id="uploadlabel" htmlFor="upload" onChange={(e) => convertImage(e)}>
                             Drag and drop to Upload
                             <input type="file" id="upload" />
                         </label>

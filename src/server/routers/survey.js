@@ -4,10 +4,10 @@ let surveyModel = require('../models/survey.js')
 let questionModel = require('../models/question')
 const cors = require('cors')
 
-surveyRouter.use(express.json())
+surveyRouter.use(express.json({ limit: '100mb' }))
 surveyRouter.use(cors())
 
-// get theme image from data base
+/* // get theme image from data base
 surveyRouter.get('/theme', (req, res) => {
 
     async function getImage() {
@@ -16,7 +16,7 @@ surveyRouter.get('/theme', (req, res) => {
     }
 
     getImage()
-})
+}) */
 
 surveyRouter.get('/allSurveys', (req, res) => {
     // fins all surveys with the same user id
