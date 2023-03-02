@@ -14,17 +14,16 @@ function SurveyListItem({ listItem }) {
     async function deleteSurvey() {
         await axios.delete(`http://localhost:8000/delete/${listItem._id}`)
         window.location.reload()
-        // navigate('/dashboard')
+
     }
 
     // toggle view of survey questions
     async function viewSurvey() {
         setViewQuestions(prev => !prev)
-        if (viewQuestions) {
-            let response = await axios.get(`http://localhost:8000/questionList/${listItem._id}`)
-            let questionList = response.data
-            setQuestionList(questionList)
-        }
+        let response = await axios.get(`http://localhost:8000/questionList/${listItem._id}`)
+        let questionList = response.data
+        setQuestionList(questionList)
+
     }
 
     return <>

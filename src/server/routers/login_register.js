@@ -2,6 +2,7 @@ const express = require('express')
 const loginRouter = express.Router()
 let userModel = require('../models/user.js')
 const cors = require('cors')
+const jwt = require('jsonwebtoken')
 
 loginRouter.use(express.json())
 loginRouter.use(cors())
@@ -19,9 +20,10 @@ loginRouter.post('/login', (req, res) => {
 
     // fetch data from database
     async function loginUser() {
+        let token = jwt.sign(password, 'group9')
         let userData = await userModel.findOne({
             email: email,
-            password: password
+            password: token
         })
 
         if (userData === null) {
@@ -35,7 +37,6 @@ loginRouter.post('/login', (req, res) => {
 
 // register new user
 loginRouter.post('/register', (req, res) => {
-    console.log(req.body)
     let { username, email, phone, profession, password } = req.body
 
     // validation of user input
@@ -52,12 +53,13 @@ loginRouter.post('/register', (req, res) => {
 
     // add user data to database
     async function addUser() {
+        let token = jwt.sign(password, 'group9')
         let newUser = new userModel({
             username: username,
             email: email,
             phone: phone,
             profession: profession,
-            password: password
+            password: token
         })
         await newUser.save()
         res.end('Registration successful')
