@@ -54,7 +54,7 @@ const Register = () => {
             <input type="text" name="reEnterPassword" value={user.reEnterPassword} placeholder="Re-enter Password" onChange={handleChange}></input>
             <div className="button" onClick={register} >Register</div>
             <div>or</div>
-            <div className="button" onClick={() => navigate("/")}>Login</div>
+            <div className="button" onClick={() => navigate("/login")}>Login</div>
         </div>
     </div>
     )
