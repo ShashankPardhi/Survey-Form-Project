@@ -1,0 +1,138 @@
+.navbar {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: #bbddff;
+  height: 60px;
+}
+
+.sidebar {
+  float: left;
+  width: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: rgb(224, 224, 224);
+}
+
+.log-out {
+  cursor: pointer;
+}
+
+.createhead {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 80px;
+  margin-left: 250px;
+  margin-right: 250px;
+  border-bottom: 1px solid rgb(215, 215, 215);
+}
+.createhead h1 {
+  font-size: 20px;
+  font-family: montserrat;
+  font-weight: 500;
+}
+.cancelbtn {
+  width: 100px;
+  height: 30px;
+  margin-right: 15px;
+  background-color: white;
+  border: 1px solid #278df1;
+  color: #278df1;
+  border-radius: 2px;
+  margin-top: 11px;
+  cursor: pointer;
+}
+.nextbtn {
+  width: 100px;
+  height: 30px;
+  background-color: #278df1;
+  border: none;
+  color: white;
+  border-radius: 2px;
+  cursor: pointer;
+}
+.main1 {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
+  margin-left: 250px;
+  margin-right: 250px;
+  font-family: montserrat;
+}
+.main1 h2 {
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+#namein {
+  width: 370px;
+  height: 27px;
+  border: 1px solid gray;
+  border-radius: 2px;
+}
+#datein {
+  width: 130px;
+  height: 27px;
+  color: gray;
+  border: 1px solid gray;
+  border-radius: 2px;
+}
+.main2 {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
+  margin-left: 250px;
+  margin-right: 250px;
+  font-family: montserrat;
+}
+.main2 h2 {
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+#descin,
+#critin {
+  width: 370px;
+  height: 130px;
+  border: 1px solid gray;
+  border-radius: 2px;
+}
+.main3 {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
+  margin-left: 250px;
+  margin-right: 250px;
+  font-family: montserrat;
+}
+.main3 h2 {
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+#surveyselect {
+  width: 130px;
+  height: 27px;
+  color: gray;
+  border: 1px solid gray;
+  border-radius: 2px;
+}
+#upload {
+  display: none;
+}
+#uploadlabel {
+  border: 1px solid gray;
+  width: 200px;
+  padding-right: 176px;
+  padding-bottom: 150px;
+  border-radius: 2px;
+  color: gray;
+  cursor: pointer;
+  text-align: center;
+}
+.log {
+  margin-right: 10px;
+}

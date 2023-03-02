@@ -1,0 +1,68 @@
+.question-table {
+  width: 90vw;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.question-item {
+  padding: 10px 30px;
+  width: inherit;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 10px;
+  background-color: rgb(190, 225, 255);
+  border: 1px solid blue;
+  display: flex;
+}
+
+.question-item-num,
+.question-item-question {
+  margin-right: 15px;
+}
+
+.question-item-msq-option {
+  margin-left: auto;
+}
+
+#mcq-yes {
+  background-color: green;
+  padding: 10px;
+  color: white;
+  border: none;
+}
+
+#mcq-no {
+  background-color: rgb(181, 3, 3);
+  padding: 10px;
+  color: white;
+  border: none;
+}
+
+.mcq-no {
+}
+
+.add-Question {
+  margin-top: 10px;
+  padding: 5px 10px;
+  background-color: rgb(70, 135, 255);
+  color: white;
+  border: none;
+}
+
+.add-Option {
+  margin-top: 10px;
+  padding: 5px 10px;
+  background-color: rgb(28, 99, 0);
+  color: white;
+  border: none;
+  border-radius: 50%;
+}
+
+.remove-Option {
+  margin-top: 10px;
+  padding: 5px 10px;
+  background-color: rgb(99, 0, 0);
+  color: white;
+  border: none;
+  border-radius: 50%;
+}

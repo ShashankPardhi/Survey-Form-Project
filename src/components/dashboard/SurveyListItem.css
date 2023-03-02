@@ -3,6 +3,8 @@
   display: flex;
   justify-content: space-evenly;
   align-items: center;
+  text-align: center;
+  border: 1px solid black;
 }
 
 .survey-list-item > * {
@@ -27,4 +29,11 @@ ul {
 .actions {
   display: flex;
   justify-content: center;
+}
+
+.survey-questions {
+  background-color: rgb(201, 255, 252);
+  padding: 10px 10vw;
+  margin-left: auto;
+  margin-right: auto;
 }

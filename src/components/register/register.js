@@ -30,8 +30,7 @@ const Register = () => {
         if (username && email && password && (password === reEnterPassword)) {
             axios.post("http://localhost:8000/register", user)
                 .then(res => {
-                    // alert(res.data.message)
-                    navigate("/")
+                    navigate("/login")
                 })
         } else {
             alert("invlid input")

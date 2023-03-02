@@ -1,9 +1,10 @@
 import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import SurveyList from './components/dashboard/SurveyList';
-import Homepage from './components/homepage/homepage'
 import Login from './components/login/login'
 import Register from './components/register/register'
+import CreateSurvey from './components/createSurvey/CreateSurvey';
+import FullCreateQuestionPage from './components/createQuestions/FullCreateQuestionPage';
 
 function App() {
 
@@ -18,9 +19,13 @@ function App() {
             loginStatus === null ? <Login /> : <SurveyList />
           }>
         </Route>
-        <Route path="/" element={<Login />}></Route>
+        {/* <Route path="/" element={<Login />}></Route> */}
+        <Route path="/login" element={<Login />}></Route>
         <Route path="/register" element={<Register />}></Route>
         <Route path="/dashboard" element={<SurveyList />}></Route>
+        <Route path='/createSurvey' element={<CreateSurvey />}></Route>
+
+        <Route path='/createQuestions' element={<FullCreateQuestionPage />}></Route>
       </Routes>
     </BrowserRouter>
   </div>);

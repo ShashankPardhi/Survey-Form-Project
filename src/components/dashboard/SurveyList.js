@@ -57,12 +57,12 @@ function SurveyList() {
 
     // ================================= Redirect to Create Survey Page =================================
     function createSurvey() {
-        navigate()
+        navigate('/createSurvey')
     }
 
     // ================================= Log Out user =================================
     function logOut() {
-        navigate('/')
+        navigate('/login')
         localStorage.removeItem("isLoggedIn")
     }
 

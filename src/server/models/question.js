@@ -2,8 +2,8 @@ const mongoose = require('mongoose')
 
 let questionSchema = mongoose.Schema({
     "questionName": String,
-    "options": String,
-    "type": String,
+    "options": [String],
+    "isMCQ": String,
     "surveyId": String
 })
 

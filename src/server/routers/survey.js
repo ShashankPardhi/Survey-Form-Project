@@ -1,6 +1,7 @@
 const express = require('express')
 const surveyRouter = express.Router()
 let surveyModel = require('../models/survey.js')
+let questionModel = require('../models/question')
 const cors = require('cors')
 
 surveyRouter.use(express.json())
@@ -25,6 +26,16 @@ surveyRouter.get('/allSurveys', (req, res) => {
     }
 
     findSurveyByUser()
+})
+
+// get all question in survey list
+surveyRouter.get('/questionList/:surveyId', (req, res) => {
+    let surveyId = req.params.surveyId
+    async function getQuestions() {
+        let questionList = await questionModel.find({ surveyId: surveyId })
+        res.end(JSON.stringify(questionList))
+    }
+    getQuestions()
 })
 
 surveyRouter.post('/newSurvey', (req, res) => {
@@ -68,7 +79,12 @@ surveyRouter.put('/edit/:survey_id', (req, res) => {
 
 surveyRouter.delete('/delete/:survey_id', (req, res) => {
     // make back end call to delete survey
-    console.log(req.params.survey_id)
+    async function deleteSurvey() {
+        await surveyModel.findByIdAndDelete(req.params.survey_id)
+        res.end()
+    }
+
+    deleteSurvey()
 })
 
 // when someone fuills up the survey

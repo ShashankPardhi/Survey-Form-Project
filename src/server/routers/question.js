@@ -10,19 +10,23 @@ questionRouter.use(cors())
 // create new question in a survey
 questionRouter.post('/addQuestion', (req, res) => {
 
-    let { questionName, options, type, surveyId } = req.body
+    let { questionName, options } = req.body
 
-    if (questionName === '' || options === '' || type === '' || surveyId === '') {
-        res.end("Some field is missing")
-    } else {
+    if (questionName !== '' && options !== []) {
         addQuestion()
     }
 
     async function addQuestion() {
         let newQuestion = new questionModel(req.body)
         await newQuestion.save()
-        res.end("new question added")
+        res.end()
     }
+})
+
+// change mcq status of question
+questionRouter.post('/mcq', (req, res) => {
+
+    res.end()
 })
 
 // record data when a question is answered in a survey
