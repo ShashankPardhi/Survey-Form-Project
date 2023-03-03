@@ -2,7 +2,7 @@
   width: 60vw;
   margin: 10px auto;
   padding: 10px 0;
-  background-color: rgb(221, 240, 255);
+  background-color: #278cf11b;
   display: flex;
 }
 
@@ -70,8 +70,8 @@
 }
 
 .new-question-item-row {
-  width: 20vw;
+  width: 10vw;
   margin: 10px auto;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
 }

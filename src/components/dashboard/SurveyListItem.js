@@ -49,13 +49,18 @@ function SurveyListItem({ listItem }) {
         {viewQuestions ? <div className='survey-questions'>
             <ul>
                 {questionList.map((question_item, index) => {
-                    return <li key={index}>
-                        Question: {question_item.questionName}
-                        {question_item.options.map((options_item) => {
-                            return <>
-                                &nbsp;<input type='radio' />{options_item}
-                            </>
-                        })}
+                    return <li key={index} className='survey-questions-row'>
+                        <div className='survey-questions-left'>
+                            Question: {question_item.questionName}
+                        </div>
+                        <div className='survey-questions-right'>
+                            {question_item.options.map((options_item) => {
+                                return <>
+                                    &nbsp;<input type='radio' name={question_item.questionName} />{options_item}
+                                </>
+                            })}
+                        </div>
+
                     </li>
                 })}
             </ul>

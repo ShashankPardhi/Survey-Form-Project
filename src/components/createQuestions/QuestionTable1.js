@@ -32,9 +32,25 @@ function QuestionTable1() {
 
     // ========================== Adding each question to question list ==========================
     async function addQuestion() {
-        setQuestionList([...questionList, { ...question, options: [...optionsList], surveyId: lastSurveyId.current }])
-        setOptionsList([])
-        await axios.post('http://localhost:8000/addQuestion', { ...question, options: [...optionsList], surveyId: lastSurveyId.current })
+        if (question.questionName === '' || optionsList.length === 0) {
+            alert('Question and options can not be empty')
+        } else {
+            setQuestionList([...questionList,
+            {
+                ...question,
+                options: [...optionsList],
+                surveyId: lastSurveyId.current
+            }])
+            await axios.post('http://localhost:8000/addQuestion',
+                {
+                    ...question,
+                    options: [...optionsList],
+                    surveyId: lastSurveyId.current
+                })
+            setOptionsList([])
+            setQuestion({ ...question, questionName: '' })
+        }
+
     }
 
     // ========================== Update current question text ==========================
@@ -44,9 +60,15 @@ function QuestionTable1() {
 
     // ========================== add Option to Current Question ==========================
     function AddOption(e) {
-        let temp = optionsList
-        temp.push(optionsText)
-        setOptionsList([...temp])
+        if (optionsText === '') {
+            alert('option can not be empty')
+        } else {
+            let temp = optionsList
+            temp.push(optionsText)
+            setOptionsList([...temp])
+            setOptionText('')
+        }
+
     }
 
     // ========================== delete selected Option from Current Question ==========================
@@ -83,7 +105,8 @@ function QuestionTable1() {
                     <div className='question-item-options'>
                         {/* ========================== display option list ========================== */}
                         {questionItem.options.map((options_item) => {
-                            return <><input type='radio' name='test' /> {options_item} <br /></>
+                            return <><input type={questionItem.isMCQ === 'No' ? 'radio' : 'checkbox'}
+                                name={index} /> {options_item} <br /></>
                         })}
                     </div>
                     <div className='question-item-msq-option'>
@@ -97,8 +120,10 @@ function QuestionTable1() {
 
             {!preview ? <li className='new-question-item'>
                 <div className='new-question-item-row'>
-                    Question &nbsp;
-                    <input type='text' placeholder='Type your question' onChange={e => changeQuestion(e)} /> <br />
+                    Question
+                </div>
+                <div className='new-question-item-row'>
+                    <input type='text' placeholder='Type your question' value={question.questionName} onChange={e => changeQuestion(e)} /> <br />
                 </div>
 
                 {/* ========================== Add new Option to current question ========================== */}
@@ -114,7 +139,7 @@ function QuestionTable1() {
                 </div>
 
                 <div className='new-question-item-row'>
-                    <input type='text' id='new-question-option-input' placeholder='Type your option' onChange={e => changeOption(e)} /> &nbsp;
+                    <input type='text' id='new-question-option-input' value={optionsText} placeholder='Type your option' onChange={e => changeOption(e)} /> &nbsp;
                     <button className='add-Option' onClick={AddOption}>+</button>
                 </div>
                 <div className='new-question-item-row'>

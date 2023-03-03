@@ -42,8 +42,17 @@ ul {
 }
 
 .survey-questions {
-  background-color: rgb(201, 255, 252);
+  background-color: #278cf11b;
   padding: 10px 10vw;
   margin-left: auto;
   margin-right: auto;
+}
+
+.survey-questions-row {
+  display: flex;
+  justify-content: center;
+}
+.survey-questions-left,
+.survey-questions-right {
+  min-width: 30%;
 }

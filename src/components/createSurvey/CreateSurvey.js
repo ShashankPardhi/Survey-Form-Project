@@ -54,10 +54,17 @@ const CreateSurvey = () => {
 
     // ======================= Send survey todatabase =======================
     function addSurvey() {
-        axios.post('http://localhost:8000/newSurvey', newSurvey)
-            .then(() => {
-                navigate('/createQuestions')
-            })
+        if (newSurvey.surveyName === '' || newSurvey.description === '' || newSurvey.type === ''
+            || newSurvey.startDate === '' || newSurvey.endDate === '' || newSurvey.otherCriteria === ''
+            || newSurvey.image === '') {
+            alert('All fields are mandatory')
+        } else {
+            axios.post('http://localhost:8000/newSurvey', newSurvey)
+                .then(() => {
+                    navigate('/createQuestions')
+                })
+        }
+
     }
 
     // ======================= Change image to string =======================
@@ -82,7 +89,7 @@ const CreateSurvey = () => {
             {/* ================ Side bar ================ */}
             <SideBar />
 
-            {/* ================ header ================ */}
+            {/* ================ Header ================ */}
             <header className="createhead">
                 <h1>Create Survey</h1>
                 <div className="header-buttons">
@@ -93,7 +100,7 @@ const CreateSurvey = () => {
                 </div>
             </header>
 
-            {/* ================ main ================ */}
+            {/* ================ Main ================ */}
             <main className="create-survey-main">
                 <div className="main1">
                     <div>
@@ -130,9 +137,10 @@ const CreateSurvey = () => {
                     <div>
                         <h2>Upload Image</h2>
                         <label id="uploadlabel" htmlFor="upload" onChange={(e) => convertImage(e)}>
-                            Drag and drop to Upload
+                            Drag and drop to Upload <br />
                             <input type="file" id="upload" />
                         </label>
+                        {newSurvey.image !== '' ? <img src={newSurvey.image} className='upload-image' /> : <></>}
                     </div>
                 </div>
             </main>
