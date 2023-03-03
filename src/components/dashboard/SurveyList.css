@@ -73,6 +73,10 @@
   color: white;
 }
 
+.info-bar > * {
+  width: 15vw;
+}
+
 .icon img {
   width: 20px;
   margin-left: 10px;

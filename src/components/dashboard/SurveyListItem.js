@@ -17,6 +17,12 @@ function SurveyListItem({ listItem }) {
 
     }
 
+    // send to edit survey page
+    function editSurvey(questionItem) {
+        localStorage.setItem('surveyId', `${questionItem._id}`)
+        navigate('/editSurvey')
+    }
+
     // toggle view of survey questions
     async function viewSurvey() {
         setViewQuestions(prev => !prev)
@@ -37,6 +43,9 @@ function SurveyListItem({ listItem }) {
             <div>{listItem["startDate"]}</div >
             <div>{listItem["endDate"]}</div >
             <div className='icon actions'>
+                <button id='survey-list-item-edit' onClick={() => editSurvey(listItem)}>
+                    Edit
+                </button>
                 <button id='survey-list-item-view' onClick={viewSurvey}>
                     {viewQuestions ? 'Close' : 'View'}
                 </button>

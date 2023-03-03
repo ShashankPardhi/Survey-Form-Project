@@ -25,6 +25,14 @@
   color: white;
 }
 
+#survey-list-item-edit {
+  background-color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  color: #278df1;
+}
+
 ul {
   list-style-type: none;
   padding: 0;

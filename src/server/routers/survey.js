@@ -17,6 +17,24 @@ surveyRouter.get('/allSurveys', (req, res) => {
     findSurveyByUser()
 })
 
+surveyRouter.post('/editSurvey', (req, res) => {
+    let { surveyId, ...editedSurvey } = req.body
+    async function EditSurveyById() {
+        let surveyItem = await surveyModel.findById(surveyId)
+        surveyItem.surveyName = editedSurvey.surveyName
+        surveyItem.description = editedSurvey.description
+        surveyItem.type = editedSurvey.type
+        surveyItem.startDate = editedSurvey.startDate
+        surveyItem.endDate = editedSurvey.endDate
+        surveyItem.otherCriteria = editedSurvey.otherCriteria
+        surveyItem.image = editedSurvey.image
+        await surveyItem.save()
+        res.end()
+    }
+
+    EditSurveyById()
+})
+
 // get all question in survey list
 surveyRouter.get('/questionList/:surveyId', (req, res) => {
     let surveyId = req.params.surveyId
@@ -60,12 +78,6 @@ surveyRouter.post('/search', (req, res) => {
     findSurveyByWord()
 })
 
-/* surveyRouter.put('/edit/:survey_id', (req, res) => {
-    // make back end call using survey id
-    // then send survey object for edit
-    console.log(req.params.survey_id)
-}) */
-
 surveyRouter.delete('/delete/:survey_id', (req, res) => {
     // make back end call to delete survey
     async function deleteSurvey() {
@@ -76,6 +88,16 @@ surveyRouter.delete('/delete/:survey_id', (req, res) => {
     deleteSurvey()
 })
 
-
+surveyRouter.get('/getSurvey/:surveyId', (req, res) => {
+    let surveyId = req.params.surveyId
+    async function getSurveyById() {
+        if (surveyId !== 'null') {
+            // to handle a specific error
+            let surveyData = await surveyModel.findById(surveyId)
+            res.end(JSON.stringify(surveyData))
+        }
+    }
+    getSurveyById()
+})
 
 module.exports = surveyRouter

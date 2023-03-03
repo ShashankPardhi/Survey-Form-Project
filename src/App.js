@@ -5,6 +5,7 @@ import Login from './components/login/login'
 import Register from './components/register/register'
 import CreateSurvey from './components/createSurvey/CreateSurvey';
 import FullCreateQuestionPage from './components/createQuestions/FullCreateQuestionPage';
+import EditSurvey from './components/createSurvey/EditSurvey';
 
 function App() {
 
@@ -24,7 +25,7 @@ function App() {
         <Route path="/register" element={<Register />}></Route>
         <Route path="/dashboard" element={<SurveyList />}></Route>
         <Route path='/createSurvey' element={<CreateSurvey />}></Route>
-
+        <Route path='/editSurvey' element={<EditSurvey />}></Route>
         <Route path='/createQuestions' element={<FullCreateQuestionPage />}></Route>
       </Routes>
     </BrowserRouter>
