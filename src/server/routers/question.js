@@ -2,7 +2,6 @@ const express = require('express')
 const cors = require('cors')
 const questionRouter = express.Router()
 let questionModel = require('../models/question.js')
-// let answerModel = require('../models/answer.js')
 
 questionRouter.use(express.json())
 questionRouter.use(cors())
@@ -23,23 +22,5 @@ questionRouter.post('/addQuestion', (req, res) => {
     }
 })
 
-// change mcq status of question
-questionRouter.post('/mcq', (req, res) => {
-
-    res.end()
-})
-
-// record data when a question is answered in a survey
-questionRouter.post('/response', (req, res) => {
-    // this will recieve an array of objects
-    // each object being a question
-    // the question object is
-    // {
-    //    "question": question text,
-    //    "options": array of options chosen by user,
-    //    "survey-id": the id of survey in database
-    // }
-    console.log(req.body)
-})
 
 module.exports = questionRouter
