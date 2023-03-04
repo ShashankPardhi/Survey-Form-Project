@@ -10,12 +10,11 @@ function SurveyListItem({ listItem }) {
     const navigate = useNavigate()
     let [viewQuestions, setViewQuestions] = useState(false)
     let [questionList, setQuestionList] = useState([])
+    let [displayState, setDisplay] = useState('flex')
 
     async function deleteSurvey() {
         await axios.delete(`https://survey-form-project-backend.onrender.com/delete/${listItem._id}`)
-        navigate('/dashboard')
-        //window.location.reload()
-
+        setDisplay('none')
     }
 
     // send to edit survey page
@@ -34,7 +33,7 @@ function SurveyListItem({ listItem }) {
     }
 
     return <>
-        <div className="survey-list-item">
+        <div className="survey-list-item" style={{ display: displayState }}>
             <div>{listItem.surveyName}
                 &nbsp; &nbsp;
                 <img src={listItem.image} width='30' />
