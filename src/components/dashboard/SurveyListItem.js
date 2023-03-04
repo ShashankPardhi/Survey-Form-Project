@@ -12,7 +12,7 @@ function SurveyListItem({ listItem }) {
     let [questionList, setQuestionList] = useState([])
 
     async function deleteSurvey() {
-        await axios.delete(`http://localhost:8000/delete/${listItem._id}`)
+        await axios.delete(`https://survey-form-project-backend.onrender.com/delete/${listItem._id}`)
         window.location.reload()
 
     }
@@ -26,7 +26,7 @@ function SurveyListItem({ listItem }) {
     // toggle view of survey questions
     async function viewSurvey() {
         setViewQuestions(prev => !prev)
-        let response = await axios.get(`http://localhost:8000/questionList/${listItem._id}`)
+        let response = await axios.get(`https://survey-form-project-backend.onrender.com/questionList/${listItem._id}`)
         let questionList = response.data
         setQuestionList(questionList)
 

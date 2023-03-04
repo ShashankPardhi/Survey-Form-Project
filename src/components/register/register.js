@@ -28,7 +28,7 @@ const Register = () => {
         const { username, email, phone, profession, password, reEnterPassword } = user
 
         if (username && email && password && (password === reEnterPassword) && phone.length === 10) {
-            axios.post("http://localhost:8000/register", user)
+            axios.post("https://survey-form-project-backend.onrender.com/register", user)
                 .then(res => {
                     navigate("/login")
                 })

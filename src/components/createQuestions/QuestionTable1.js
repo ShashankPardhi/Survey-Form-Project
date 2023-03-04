@@ -17,7 +17,7 @@ function QuestionTable1() {
 
     useEffect(() => {
         async function getAllSurveys() {
-            let response = await axios('http://localhost:8000/allSurveys')
+            let response = await axios('https://survey-form-project-backend.onrender.com/allSurveys')
             let surveyList = response.data
             let lastSurvey = surveyList.at(-1)
             lastSurveyId.current = lastSurvey._id
@@ -41,7 +41,7 @@ function QuestionTable1() {
                 options: [...optionsList],
                 surveyId: lastSurveyId.current
             }])
-            await axios.post('http://localhost:8000/addQuestion',
+            await axios.post('https://survey-form-project-backend.onrender.com/addQuestion',
                 {
                     ...question,
                     options: [...optionsList],
@@ -88,7 +88,7 @@ function QuestionTable1() {
         let temp = [...questionList]
         temp[index].isMCQ = str
         setQuestionList([...temp])
-        axios.post('http://localhost:8000/mcq', { isMCQ: str })
+        axios.post('https://survey-form-project-backend.onrender.com/mcq', { isMCQ: str })
     }
 
     return <div className="question-table">

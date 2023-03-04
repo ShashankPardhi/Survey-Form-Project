@@ -59,7 +59,7 @@ const CreateSurvey = () => {
             || newSurvey.image === '') {
             alert('All fields are mandatory')
         } else {
-            axios.post('http://localhost:8000/newSurvey', newSurvey)
+            axios.post('https://survey-form-project-backend.onrender.com/newSurvey', newSurvey)
                 .then(() => {
                     navigate('/createQuestions')
                 })

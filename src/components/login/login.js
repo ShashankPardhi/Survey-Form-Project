@@ -21,7 +21,7 @@ const Login = () => {
     }
 
     const login = () => {
-        axios.post("http://localhost:8000/login", user)
+        axios.post("https://survey-form-project-backend.onrender.com/login", user)
             .then(res => {
                 if (res.data === "ok") {
                     localStorage.setItem("isLoggedIn", true)

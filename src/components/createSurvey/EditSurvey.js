@@ -30,7 +30,7 @@ const EditSurvey = () => {
     useEffect(() => {
         let surveyId = localStorage.getItem('surveyId')
         localStorage.removeItem('surveyId')
-        axios.get(`http://localhost:8000/getSurvey/${surveyId}`)
+        axios.get(`https://survey-form-project-backend.onrender.com/getSurvey/${surveyId}`)
             .then(res => {
                 setNewSurvey({
                     surveyId: res.data._id,
@@ -82,7 +82,7 @@ const EditSurvey = () => {
     // ======================= Send edits to data base =======================
     async function confirmEditSurvey() {
         if (newSurvey.surveyId !== '') {
-            await axios.post('http://localhost:8000/editSurvey', newSurvey)
+            await axios.post('https://survey-form-project-backend.onrender.com/editSurvey', newSurvey)
             navigate('/dashboard')
         } else {
             alert("Sorry! some error happened, go back and try again.")

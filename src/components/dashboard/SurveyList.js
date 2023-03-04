@@ -25,7 +25,7 @@ function SurveyList() {
     let [surveyList, setSurveyList] = useState([])
     useEffect(() => {
         async function fetchSurveys() {
-            let response = await axios.get('http://localhost:8000/allSurveys')
+            let response = await axios.get('https://survey-form-project-backend.onrender.com/allSurveys')
             let surveyList = await response.data
             setSurveyList(surveyList)
         }
@@ -36,13 +36,13 @@ function SurveyList() {
     let [searchText, setSearchText] = useState('')
     async function startSearchText() {
         if (searchText !== '') {
-            let response = await axios.post(`http://localhost:8000/search`, {
+            let response = await axios.post(`https://survey-form-project-backend.onrender.com/search`, {
                 word: searchText
             })
             let searchResult = response.data
             setSurveyList(searchResult)
         } else {
-            let response = await axios.get(`http://localhost:8000/allSurveys`)
+            let response = await axios.get(`https://survey-form-project-backend.onrender.com/allSurveys`)
             let searchResult = response.data
             setSurveyList(searchResult)
         }
@@ -50,7 +50,7 @@ function SurveyList() {
     }
     // ================================= Sort surveys by name =================================
     async function sortSurvey() {
-        let response = await axios.get(`http://localhost:8000/sort`)
+        let response = await axios.get(`https://survey-form-project-backend.onrender.com/sort`)
         let searchResult = response.data
         setSurveyList(searchResult)
     }
