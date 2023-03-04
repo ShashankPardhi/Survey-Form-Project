@@ -15,9 +15,14 @@ app.use(loginRouter)
 app.use(surveyRouter)
 app.use(questionRouter)
 
+app.get('/test', (req, res) => {
+    res.end('working')
+})
+
 
 // connect database
-const mongo_db_url = 'mongodb://localhost:27017/survey'
+/* const mongo_db_url = 'mongodb://localhost:27017/survey' */
+const mongo_db_url = 'mongodb+srv://praful:praful@cluster0.6xsocrs.mongodb.net/?retryWrites=true&w=majority'
 mongoose.connect(mongo_db_url, () => {
     console.log('Connected to database')
 })
