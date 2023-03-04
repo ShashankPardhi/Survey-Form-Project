@@ -13,7 +13,8 @@ function SurveyListItem({ listItem }) {
 
     async function deleteSurvey() {
         await axios.delete(`https://survey-form-project-backend.onrender.com/delete/${listItem._id}`)
-        window.location.reload()
+        navigate('/dashboard')
+        //window.location.reload()
 
     }
 
