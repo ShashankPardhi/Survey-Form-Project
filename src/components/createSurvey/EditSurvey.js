@@ -6,6 +6,14 @@ import axios from "axios";
 import SideBar from "../dashboard/SideBar";
 
 const EditSurvey = () => {
+    // ================================= Check if user is logged in =================================
+    useEffect(() => {
+        let loginStatus = localStorage.getItem("isLoggedIn")
+        if (loginStatus === null) {
+            // user not logged in, redirect to login page
+            navigate('/login')
+        }
+    }, [])
     // ======================= Log out functionality =======================
     const navigate = useNavigate()
     function logout() {
