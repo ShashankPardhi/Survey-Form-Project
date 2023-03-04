@@ -7,7 +7,7 @@ questionRouter.use(express.json())
 questionRouter.use(cors())
 
 // create new question in a survey
-questionRouter.post('/addQuestion', (req, res) => {
+questionRouter.post('/addQuestion', cors(), (req, res) => {
 
     let { questionName, options } = req.body
 

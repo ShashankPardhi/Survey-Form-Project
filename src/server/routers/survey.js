@@ -17,7 +17,7 @@ surveyRouter.get('/allSurveys', (req, res) => {
     findSurveyByUser()
 })
 
-surveyRouter.post('/editSurvey', (req, res) => {
+surveyRouter.post('/editSurvey', cors(), (req, res) => {
     let { surveyId, ...editedSurvey } = req.body
     async function EditSurveyById() {
         let surveyItem = await surveyModel.findById(surveyId)
@@ -36,7 +36,7 @@ surveyRouter.post('/editSurvey', (req, res) => {
 })
 
 // get all question in survey list
-surveyRouter.get('/questionList/:surveyId', (req, res) => {
+surveyRouter.get('/questionList/:surveyId', cors(), (req, res) => {
     let surveyId = req.params.surveyId
     async function getQuestions() {
         let questionList = await questionModel.find({ surveyId: surveyId })
@@ -45,7 +45,7 @@ surveyRouter.get('/questionList/:surveyId', (req, res) => {
     getQuestions()
 })
 
-surveyRouter.post('/newSurvey', (req, res) => {
+surveyRouter.post('/newSurvey', cors(), (req, res) => {
 
     // add new survey to database
     async function createSurvey() {
@@ -57,7 +57,7 @@ surveyRouter.post('/newSurvey', (req, res) => {
     createSurvey()
 })
 
-surveyRouter.get('/sort', (req, res) => {
+surveyRouter.get('/sort', cors(), (req, res) => {
     // fins all surveys with the same user id in sorted order
     async function findSurveyByUserSorted() {
         let surveyList = await surveyModel.find().sort('surveyName')
@@ -67,7 +67,7 @@ surveyRouter.get('/sort', (req, res) => {
 })
 
 // search survey by word in name
-surveyRouter.post('/search', (req, res) => {
+surveyRouter.post('/search', cors(), (req, res) => {
     let { word } = req.body
     // find all surveys where survey name container the given word
     async function findSurveyByWord() {
@@ -78,7 +78,7 @@ surveyRouter.post('/search', (req, res) => {
     findSurveyByWord()
 })
 
-surveyRouter.delete('/delete/:survey_id', (req, res) => {
+surveyRouter.delete('/delete/:survey_id', cors(), (req, res) => {
     // make back end call to delete survey
     async function deleteSurvey() {
         await surveyModel.findByIdAndDelete(req.params.survey_id)
@@ -88,7 +88,7 @@ surveyRouter.delete('/delete/:survey_id', (req, res) => {
     deleteSurvey()
 })
 
-surveyRouter.get('/getSurvey/:surveyId', (req, res) => {
+surveyRouter.get('/getSurvey/:surveyId', cors(), (req, res) => {
     let surveyId = req.params.surveyId
     async function getSurveyById() {
         if (surveyId !== 'null') {

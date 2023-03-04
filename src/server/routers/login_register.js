@@ -8,7 +8,7 @@ loginRouter.use(express.json())
 loginRouter.use(cors())
 
 // user login
-loginRouter.post('/login', (req, res) => {
+loginRouter.post('/login', cors(), (req, res) => {
     let { email, password } = req.body
 
     // validation of user input
@@ -36,7 +36,7 @@ loginRouter.post('/login', (req, res) => {
 })
 
 // register new user
-loginRouter.post('/register', (req, res) => {
+loginRouter.post('/register', cors(), (req, res) => {
     let { username, email, phone, profession, password } = req.body
 
     // validation of user input
