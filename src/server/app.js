@@ -14,8 +14,9 @@ const questionRouter = require('./routers/question')
 app.use(loginRouter)
 app.use(surveyRouter)
 app.use(questionRouter)
+app.use(cors())
 
-app.get('/test', (req, res) => {
+app.get('/test', cors(), (req, res) => {
     res.end('working')
 })
 
