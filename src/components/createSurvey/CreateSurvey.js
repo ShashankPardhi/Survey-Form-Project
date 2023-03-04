@@ -5,7 +5,9 @@ import { useNavigate } from 'react-router-dom'
 import axios from "axios";
 import SideBar from "../dashboard/SideBar";
 
+
 const CreateSurvey = () => {
+    const navigate = useNavigate()
     // ================================= Check if user is logged in =================================
     useEffect(() => {
         let loginStatus = localStorage.getItem("isLoggedIn")
@@ -15,7 +17,7 @@ const CreateSurvey = () => {
         }
     }, [])
     // ======================= Log out functionality =======================
-    const navigate = useNavigate()
+
     function logout() {
         navigate('/login')
         localStorage.removeItem("isLoggedIn")
