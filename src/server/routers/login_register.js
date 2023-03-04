@@ -64,8 +64,6 @@ loginRouter.post('/register', (req, res) => {
         await newUser.save()
         res.end('Registration successful')
     }
-
-    addUser()
 })
 
 module.exports = loginRouter
